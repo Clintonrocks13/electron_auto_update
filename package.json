@@ -1,6 +1,6 @@
 {
   "name": "electron_app_example",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "main": "main.js",
   "description": "Electron app with auto-updater",
   "scripts": {
@@ -41,7 +41,7 @@
       {
         "provider": "github",
         "owner": "Clintonrocks13",
-        "repo": "https://github.com/Clintonrocks13/electron_auto_update.git",
+        "repo": "electron_auto_update",
         "private": false
       }
     ]
