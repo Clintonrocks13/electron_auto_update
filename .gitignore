@@ -1,0 +1,59 @@
+# Node Modules
+node_modules/
+
+# Package Manager Lockfiles
+package-lock.json
+yarn.lock
+pnpm-lock.yaml
+
+# Electron Specific
+electron-builder/cache/
+dist/
+release/
+out/
+
+# OS Specific Files
+.DS_Store
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+
+# Logs and Temporary Files
+*.log
+*.tmp
+*.bak
+*.swp
+*.swo
+._*
+
+# Editor and IDE Specific Files
+.vscode/
+.idea/
+*.iml
+*.project
+*.workspace
+*.sublime-*
+
+# macOS Specific
+.fseventsd
+.Spotlight-V100
+.TemporaryItems
+.Trashes
+
+# Linux Specific
+*~
+*.orig
+
+# Optional: Ignore environment variables file
+.env
+.env.*.local
+
+# Optional: Ignore coverage reports
+coverage/
+
+# Optional: Ignore documentation builds
+docs/_build/
+
+# Add any other files or directories you want to ignore
+# Example:
+# my-secret-config.json
