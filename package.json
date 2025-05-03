@@ -1,7 +1,7 @@
 {
   "name": "electron_app_example",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main.js",
   "description": "Electron app with auto-updater",
   "scripts": {
     "start": "electron .",
@@ -9,7 +9,11 @@
     "publish": "electron-builder --publish always"
   },
   "keywords": [],
-  "author": "Clinton Fernandes",
+  "email": "clinfernandes13@gmail.com",
+  "author": {
+    "name": "Clinton Fernandes",
+    "email": "clinfernandes13@gmail.com"
+  },
   "license": "ISC",
   "devDependencies": {
     "electron": "^36.1.0",
@@ -36,8 +40,8 @@
     "publish": [
       {
         "provider": "github",
-        "owner": "YOUR_GITHUB_USERNAME",
-        "repo": "YOUR_PRIVATE_REPO_NAME",
+        "owner": "Clintonrocks13",
+        "repo": "https://github.com/Clintonrocks13/electron_auto_update.git",
         "private": false
       }
     ]
