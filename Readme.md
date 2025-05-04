@@ -34,7 +34,7 @@ Before you can run and test the auto-update functionality, you need to set up a 
 1.  **Clone the repository:**
     ```bash
     git clone <repository_url>
-    cd electron-auto-update-boilerplate
+    cd electron-auto-update
     ```
     *(Replace `<repository_url>` with the URL of this boilerplate repository if you've cloned it, or your own repository if you've adapted the code.)*
 
@@ -79,17 +79,27 @@ Before you can run and test the auto-update functionality, you need to set up a 
 
 There are two main ways to configure `electron-updater` for private/public GitHub repositories:
 
-**Option 1: Using `electron-builder` Configuration (Recommended for most)**
+**Option 1: Use package.json to configure it (check package,json build section)**
 
-Configure the `publish` section in your `electron-builder.config.js` (or within the `build` section of your `package.json`):
+**Option 2: Setting `feedURL` Directly in `main.js`**
 
-```json
-"publish": [
-  {
-    "provider": "github",
-    "owner": "Clintonrocks13",
-    "repo": "electron_auto_update",
-    "private": true,
-    "token": process.env.GH_TOKEN
-  }
-]
+Alternatively, you can configure the `autoUpdater` directly in your `main.js` file. This can be useful if you prefer to manage the update configuration within your application's code rather than relying solely on `electron-builder`'s configuration.
+
+To do this, you will use the `autoUpdater.setFeedURL()` method within your `app.on('ready', ...)` handler. Here's how you can configure it for a private GitHub repository:
+
+```javascript
+const { autoUpdater } = require('electron-updater');
+const { app } = require('electron');
+
+app.on('ready', () => {
+  autoUpdater.setFeedURL({
+    provider: 'github',
+    owner: 'Clintonrocks13', // Replace with your GitHub username
+    repo: 'electron_auto_update', // Replace with your GitHub repository name
+    private: true,
+    token: process.env.GH_TOKEN // It's recommended to use an environment variable for your token
+    // OR, you can directly include your token here (less secure):
+    // token: 'YOUR_GITHUB_PERSONAL_ACCESS_TOKEN'
+  });
+  autoUpdater.checkForUpdatesAndNotify();
+});
