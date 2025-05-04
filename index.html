@@ -2,36 +2,49 @@
 <html>
 <head>
   <meta charset="UTF-8">
-  <title>Hello World this is update version 1.0.1!</title>
+  <title>Hello World</title>
 </head>
 <body>
-  <h1>Hello World!</h1>
+  <h1>Hello World ! you can update this message to test auto updates</h1>
   <p id="version"></p>
   <p id="update-message"></p>
   <button id="restart-button" style="display: none;">Restart App</button>
+  <div id="update-controls"></div>
 
   <script>
-    const { ipcRenderer } = require('electron');
     const versionElement = document.getElementById('version');
     const updateMessageElement = document.getElementById('update-message');
     const restartButton = document.getElementById('restart-button');
+    const updateControls = document.getElementById('update-controls');
 
-    ipcRenderer.send('app-version');
+    window.electronAPI.send('app-version');
 
-    ipcRenderer.on('app-version', (event, version) => {
+    window.electronAPI.receive('app-version', (version) => {
       versionElement.textContent = `App Version: ${version}`;
     });
 
-    ipcRenderer.on('update-message', (event, message) => {
+    window.electronAPI.receive('update-message', (message) => {
       updateMessageElement.textContent = message;
     });
 
-    ipcRenderer.on('update-ready', () => {
+    window.electronAPI.receive('update-ready', () => {
       restartButton.style.display = 'block';
     });
 
     restartButton.addEventListener('click', () => {
-      ipcRenderer.send('restart-app');
+      window.electronAPI.send('restart-app');
+    });
+
+    window.electronAPI.receive('update-available-ui', () => {
+      console.log('update-available UI event triggered')
+      const downloadButton = document.createElement('button');
+      downloadButton.textContent = 'Download Update';
+      downloadButton.addEventListener('click', () => {
+        window.electronAPI.send('download-update');
+        downloadButton.disabled = true;
+        updateMessageElement.textContent = 'Downloading update...';
+      });
+      updateControls.appendChild(downloadButton);
     });
   </script>
 </body>

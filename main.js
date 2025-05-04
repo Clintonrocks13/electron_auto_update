@@ -62,8 +62,14 @@ autoUpdater.on('checking-for-update', () => {
 autoUpdater.on('update-available', (info) => {
   log.info('Update available', info);
   if (mainWindow && mainWindow.webContents) {
-    mainWindow.webContents.send('update-message', 'Update available. Downloading...');
+    mainWindow.webContents.send('update-message', 'Update available. Downloading 1.0.1...');
+    log.info('sending ', info);
+    mainWindow.webContents.send('update-available-ui'); 
   }
+});
+
+ipcMain.on('download-update', () => {
+  autoUpdater.downloadUpdate();
 });
 
 autoUpdater.on('update-not-available', (info) => {

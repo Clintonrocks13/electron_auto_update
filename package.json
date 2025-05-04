@@ -1,6 +1,6 @@
 {
   "name": "electron_app_example",
-  "version": "1.0.1",
+  "version": "1.0.0",
   "main": "main.js",
   "description": "Electron app with auto-updater",
   "scripts": {
@@ -15,11 +15,14 @@
     "email": "clinfernandes13@gmail.com"
   },
   "license": "ISC",
-  "devDependencies": {
-    "electron": "^36.1.0",
-    "electron-builder": "^26.0.12",
+  "dependencies":{
     "electron-log": "^5.4.0",
     "electron-updater": "^6.6.2"
+    
+  },
+  "devDependencies": {
+    "electron": "^36.1.0",
+    "electron-builder": "^26.0.12"
   },
   "build": {
     "appId": "com.steamengineapps.electronupdatetemplate",
