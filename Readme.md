@@ -1,6 +1,6 @@
 # Electron Auto-Update Boilerplate
 
-This is a simple Electron boilerplate application demonstrating the auto-update feature using `electron-updater` and GitHub Releases for a private repository. It displays a basic "Hello World" interface and provides feedback on the update process.
+This is a simple Electron boilerplate application demonstrating the auto-update feature using `electron-updater` and GitHub Releases for a private/public repository. It displays a basic "Hello World" interface and provides feedback on the update process.
 
 ## Features
 
@@ -13,13 +13,13 @@ This is a simple Electron boilerplate application demonstrating the auto-update 
 
 ## Prerequisites
 
-Before you can run and test the auto-update functionality, you need to set up a private GitHub repository and a personal access token:
+Before you can run and test the auto-update functionality, you need to set up a private/public GitHub repository and a personal access token:
 
-1.  **Private GitHub Repository:**
-    * You need a private GitHub repository to host your application's releases. This boilerplate is configured to work with the repository at `https://github.com/Clintonrocks13/electron_auto_update`. You'll need to replace this with your own private repository URL in the `package.json` or `electron-builder.config.js`.
+1.  **Private/public GitHub Repository:**
+    * You need a private/public GitHub repository to host your application's releases. This boilerplate is configured to work with the repository at `https://github.com/Clintonrocks13/electron_auto_update`. You'll need to replace this with your own private/public repository URL in the `package.json` or `electron-builder.config.js`.
 
 2.  **GitHub Personal Access Token:**
-    * To allow the `electron-updater` to access your private repository's releases, you need to generate a Personal Access Token on GitHub with the following scope:
+    * To allow the `electron-updater` to access your private/public repository's releases, you need to generate a Personal Access Token on GitHub with the following scope:
         * **`repo`**: This grants full access to private and public repositories. For a more specific permission, you might be able to use **`contents:read`** if you only need to download release assets.
     * **Generating a Token:**
         1.  Go to your GitHub account settings.
@@ -77,7 +77,7 @@ Before you can run and test the auto-update functionality, you need to set up a 
 
 ## Configuring Auto-Updater
 
-There are two main ways to configure `electron-updater` for private GitHub repositories:
+There are two main ways to configure `electron-updater` for private/public GitHub repositories:
 
 **Option 1: Using `electron-builder` Configuration (Recommended for most)**
 
